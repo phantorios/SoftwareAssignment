@@ -15,14 +15,14 @@ class EquipmentFileParser
         (?P<location>\S+)\s+
         (?P<room>\S+)\s+
         (?P<tail>.+?)
-        \s*\|?$
+        \s*\|?\s*$
     /x';
 
     private string $row2Pattern = '/
         ^\|
         (?P<description_tech_object>.+?)\s{2,}
         (?P<size_dimensions2>\d+X[\dX]*)?\s*
-        (?P<gross_weight>[\d.,]+\s+KG)\s+
+        (?P<gross_weight>[\d.,]+\s+[A-Z]+)\s+
         [A-Z]+\s+
         (?P<length>[\d.,]+)\s+
         (?P<width>[\d.,]+)\s+
@@ -34,13 +34,13 @@ class EquipmentFileParser
         (?P<valid_to>\d{2}\.\d{2}\.\d{4})\s+
         (?P<PP_WkCtr>\d{8})\s+
         (?P<Work_ctr>\S+)\s+
-        (?P<WorkCtr>\d{8})
-        \s*\|?$
+        (?P<WorkCtr>\d{8})\s*
+        \|?\s*$
     /x';
 
     private string $row3Pattern = '/
         ^\|\s*
-        (?P<net_weight>[\d.,]+\s+KG)\s+
+        (?P<net_weight>[\d,]+\s+KG)\s+
         (?P<old_material_no>\S+)\s+
         (?P<ms2>\S+)\s+
         (?P<pp2>\d*)\s*
@@ -50,8 +50,8 @@ class EquipmentFileParser
         (?P<chngd_on>\d{2}\.\d{2}\.\d{4})\s+
         (?P<changed_by>\S+)\s+
         (?P<short_description>.+?)\s{2,}
-        (?P<short_desc2>.+?)
-        \s*\|?$
+        (?P<short_desc2>\S.*?)\s*
+        \|?\s*$
     /x';
 
     public function parse(string $filePath): array
