@@ -1,10 +1,13 @@
 *
 !private/
 !public/
+*
 !.gitignore
-#import folder for assignment
+
 !import/
 !import/.gitkeep
-
 !import/processed/
 !import/processed/.gitkeep
+
+import/*.txt
+import/processed/*.txt
